@@ -47,7 +47,7 @@
 
         <div class="container">
             <div class="content">
-                <div class="title">Marks Ugh Shopify Admin Portal</div>
+                <div class="title">Marks URG Shopify Admin Portal</div>
                 <div><br /></div>
                 <h2>Welcome to Heaven. Click a link below to proceed</h2>
                 <div><a href='/show_products'>See Products</a></div>

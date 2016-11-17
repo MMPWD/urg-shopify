@@ -193,13 +193,19 @@ $shopify = $this->createShopifyObject();
 
 
 private function createShopifyObject() {
+  // old ugh
+  //    $s = App::make('ShopifyAPI', [
+  //   'API_KEY' => 'ba7683f64f2cf40510bb3946bcaf40fe',
+  //   'API_SECRET' => '1ed3dfefc2231b3eb8d1eb6c1ce51a17',
+  //   'SHOP_DOMAIN' => 'ugh-shopify.myshopify.com',
+  //   'ACCESS_TOKEN' => 'd4038c3ae9bf31bb1d5d1b32ce7c17db'
+  // ]);
      $s = App::make('ShopifyAPI', [
-    'API_KEY' => 'ba7683f64f2cf40510bb3946bcaf40fe',
-    'API_SECRET' => '1ed3dfefc2231b3eb8d1eb6c1ce51a17',
-    'SHOP_DOMAIN' => 'ugh-shopify.myshopify.com',
-    'ACCESS_TOKEN' => 'd4038c3ae9bf31bb1d5d1b32ce7c17db'
+    'API_KEY' => '9894caa0dfeea24fa0072bbd742d8b4d',
+    'API_SECRET' => '8cce588d82d90374e4ccd9f646097de7',
+    'SHOP_DOMAIN' => 'urg-test-shop.myshopify.com',
+    'ACCESS_TOKEN' => 'fb7c5f2957f656c7b4524b9d69f09f52'
   ]);
-
      return $s;
 }
 
