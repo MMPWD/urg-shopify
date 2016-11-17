@@ -1,0 +1,404 @@
+@import 'variables';
+
+body, html {
+  font-family: $font-stack;
+}
+
+a {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+a.underline {
+  text-decoration: underline;
+}
+
+.top-bar-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: $top-bar-height;
+  color: $darkest-grey;
+  //color: $white;
+}
+
+.top-bar-logo span {
+  font-weight: 200;
+  color: $dark-grey;
+  //color: $off-white;
+}
+
+.login-heading {
+  padding-bottom: 20px;
+}
+
+.login-heading .top-bar-logo {
+  font-size: 300%;
+}
+
+.sidebar-button .fa-bars {
+  font-size: 1.4rem;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 30px;
+  color: $heading-color;
+}
+
+h2 {
+  font-size: 20px;
+  color: $medium-grey;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+h2.title {
+  font-size: 24px;
+  color: $medium-grey;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 18px;
+  color: $medium-grey;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+h3.title {
+  margin-top: 0;
+  padding-top: 0;
+  font-weight: 600;
+  color: $heading-color;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+h4 {
+  font-size: 22px;
+  color: $medium-grey;
+  line-height: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.title-information-wrapper h1 {
+  margin-bottom: 5px;
+}
+
+.title-information-wrapper small {
+  font-size: 12px;
+  color: $smoke;
+  line-height: 13px;
+}
+
+.page-nav {
+  font-size: 12px;
+  font-weight: 700;
+  color: $medium-grey;
+}
+
+.page-nav ul.inline-list li {
+  margin-right: $standard-padding;
+  cursor: pointer;
+}
+
+.page-nav ul.inline-list li span {
+  font-weight: 600;
+}
+
+.page-nav ul.inline-list li:last-child {
+  margin-right: 0;
+}
+
+.page-nav ul.inline-list li:hover {
+  color: $primary-color;
+}
+
+.page-nav ul.inline-list li.active {
+  color: $primary-color;
+}
+
+// Vehicle Show / Edit
+
+.title-information-wrapper h1 .label {
+  display: inline-block;
+  position: relative;
+  top: -4px;
+  background: $secondary-color;
+}
+
+.vehicle-meta-area {
+  font-size: 15px;
+}
+
+.vehicle-meta-area > div {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.vehicle-meta-area .label {
+  background: $dark-grey;
+  color: $white;
+}
+
+.label.movement {
+  background: $third-color;
+  color: $dark-grey;
+}
+
+.vehicle-meta-area span.title {
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+.vehicle-meta-area span.value {
+  font-weight: 400;
+  margin-right: 5px;
+}
+
+// Lists
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+ul.inline-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+ul.inline-list.centered {
+  text-align: center;
+}
+
+ul.inline-list li {
+  display: inline;
+}
+
+ul.inline-list li a {
+  text-decoration: none;
+}
+
+// Sidebar
+
+.top-bar-personal-details {
+  text-align: left;
+  padding-left: 10px;
+}
+
+.top-bar-personal-details-caret {
+  padding-top: 0px;
+  padding-left: 10px;
+}
+
+.top-bar-personal-details .personal-company {
+  font-size: 13px;
+  color: $medium-grey;
+  //color: $white;
+  letter-spacing: 0.23px;
+  line-height: 15px;
+  font-weight: 600;
+  display: block;
+}
+
+.top-bar-personal-details .personal-user-name {
+  font-size: 13px;
+  color: $dark-grey;
+  //color: $white;
+  letter-spacing: 0.27px;
+  line-height: 18px;
+  font-weight: 700;
+}
+
+.sidebar-section a {
+
+  color: $white;
+}
+
+
+.callout-heading {
+  font-size: 18px;
+  font-weight: normal;
+  height: auto;
+  line-height: 24px;
+  display: block;
+  color: $darkest-grey;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.callout-value {
+  font-size: 36px;
+  font-weight: normal;
+  height: auto;
+  line-height: 34px;
+  display: block;
+  color: $darkest-grey;
+  text-align: center;
+  //margin-bottom: 10px;
+}
+
+
+
+
+// Vehicle Show page
+.vehicle-show-details h2 {
+  margin-bottom: 30px;
+}
+
+.vehicle-show-details .no-wrap {
+  margin-bottom: 10px;
+}
+
+.vehicle-show-details .reg-container {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.vehicle-show-details span.title {
+  font-size: 18px;
+  font-weight: 400;
+   padding-right: 10px;
+}
+
+.vehicle-show-details span.value {
+  padding-right: 10px;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.vehicle-show-seller-details {
+  margin-top: 0px;
+}
+
+
+
+// input classes
+
+.invisible-input-casing, .invisible-input-casing:disabled {
+  background: none;
+  background-color: none;
+  border: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  color: $dark-grey;
+}
+
+// Form classes
+
+label {
+  color: $dark-grey;
+  font-size: 14px;
+  color: $mc-grey;
+  font-weight: 600;
+  display: block;
+}
+
+label textarea, label select, label input {
+  font-weight: 500;
+}
+
+
+
+.form-section h2.impact {
+
+  background: $white;
+  border-left: 2px solid $primary-color;
+  border-bottom: 2px solid $primary-color;
+  color: $dark-grey;
+  padding: 10px;
+}
+
+// Car Reg number plate CSS
+
+.reg-plate {
+  background-color: #ec0;
+  background: -webkit-linear-gradient(#fff, #ddd);
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .75);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  display: inline-block;
+  padding: 0 20px 0 40px;
+  position: relative;
+  font-size: 32px;
+  line-height: 40px;
+  margin: 0px 0 0px 0;
+}
+
+.reg-plate::before {
+  background-color: #24c;
+  background: -webkit-linear-gradient(#24c, #02a);
+  border-radius: 4px 0 0 4px;
+  content: 'GB';
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 8px;
+  line-height: 14px;
+  position: absolute;
+  padding-top: 18px;
+  left: 5px;
+  top: 5px;
+  text-align: center;
+  width: 20px;
+}
+
+.reg-plate::after {
+  color: #fff;
+  content: "\25CC";
+  font-family: sans-serif;
+  font-size: 9px;
+  left: 0;
+  height: 50%;
+  line-height: 30px;
+  padding-left: 11px;
+  position: absolute;
+}
+
+
+
+// List design
+
+.list-icon {
+  @include border-radius(100px);
+  border: 2px solid $smoke;
+  height: 35px;
+  width: 35px;
+  text-align: center;
+  line-height: 35px;
+  margin-right: $standard-padding;
+  position: relative;
+}
+
+.list-icon .list-icon-primary {
+  color: $smoke;
+  line-height: 35px;
+  font-size: 20px;
+  position: relative;
+  top: -1px;
+  right: -1px;
+}
+
+.list-design-b h3 {
+  line-height: 35px;
+  margin: 0;
+}
+
+.list-design-b p {
+  margin-top: 5px;
+}
+
+.list-design-b .button {
+  margin-top: 3px;
+}

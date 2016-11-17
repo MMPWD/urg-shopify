@@ -1,0 +1,570 @@
+@import 'variables';
+
+body {
+  font-size: 14px;
+  width: 100%;
+  color: $medium-grey;
+  height: 100%;
+  background: $off-white;
+}
+
+// Content area background colour
+.off-canvas-content {
+  background: $off-white;
+}
+
+.page-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+//#loginPage {
+//  background: $off-white;
+//}
+
+.content-wrapper {
+  width: auto;
+  color: $medium-grey;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: $standard-padding;
+  height: 100%;
+}
+
+.secondary-menu {
+  padding-top: $standard-padding + 20px;
+  padding-bottom: $standard-padding;
+}
+
+.secondary-menu .page-info select {
+}
+
+.secondary-menu .page-info .page-info-left {
+  float: left;
+}
+
+.secondary-menu .page-info .page-info-right {
+  float: right;
+}
+
+.secondary-menu .page-info button.simple {
+  opacity: 0.5;
+  background: $secondary-color
+}
+
+.secondary-menu .page-info button.simple:hover {
+  opacity: 1;
+}
+
+.vehicle-show-details h2 {
+  margin-top: 0;
+}
+
+.title-information-wrapper {
+  padding-top: $standard-padding + 10px;
+  background: $title-information-wrapper-background-colour;
+  border-bottom: 1px solid $border-grey;
+  padding-left: $standard-padding;
+  padding-right: $standard-padding;
+}
+
+.title-information-wrapper .page-info {
+  padding-bottom: $standard-padding + 10px;
+}
+
+.title-information-wrapper .page-nav {
+  padding-bottom: $standard-padding - 10px;
+}
+
+.main-wrapper {
+  padding-top: 60px;
+  padding-bottom: $standard-padding;
+  position: relative;
+  margin-left: $sidebar-width-inital;
+
+  //padding-left: $standard-padding;
+  //padding-right: $standard-padding;
+}
+
+.sidebar-section {
+  margin-left: 0;
+  background: $darkest-grey;
+  @include transition(0.3s);
+  // border-right: $sidebar-right-border;
+  // padding-bottom: $sidebar-footer-height + $standard-padding;
+  padding-left: 10px;
+}
+
+.sidebar-wrapper {
+  height: 100%;
+  overflow-x: hidden;
+  display: block;
+  margin-left: 0;
+  padding-top: $top-bar-height + 30px;
+  width: $sidebar-width-inital;
+  background: $darkest-grey;
+  position: fixed;
+  @include transition(0.3s);
+  // border-right: $sidebar-right-border;
+  // padding-bottom: $sidebar-footer-height + $standard-padding;
+  padding-left: 10px;
+}
+
+.off-canvas {
+  background: inherit;
+}
+
+.sidebar-menu-area {
+  color: $white;
+  margin-bottom: 35px;
+}
+
+.sidebar-menu-area .heading {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: $smoke;
+}
+
+.sidebar-menu-area a li {
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+
+.sidebar-menu-area .fa {
+  margin-right: 7px;
+  margin-left: 5px;
+}
+
+.sidebar-wrapper.closed {
+  margin-left: -$sidebar-width-inital;
+}
+
+.sidebar-footer-menu {
+  text-align: center;
+  padding: 10px;
+}
+
+.sidebar-footer-menu span {
+  color: $light-grey;
+  font-size: 12px;
+}
+
+.top-bar {
+  background-color: $top-bar-background-colour;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  border-bottom: 1px solid $light-grey;
+  -webkit-box-shadow: 0px 23px 8px 0px rgba(0,0,0,0.29);
+-moz-box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.29);
+box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.29);
+  color: $dark-grey;
+}
+
+.top-bar .top-bar-left div {
+  display: inline-block;
+}
+
+.top-bar .top-bar-logo {
+  margin-top: -3px;
+  padding-left: $standard-padding;
+  padding-right: $standard-padding;
+  border-right: 1px solid $light-grey;
+}
+
+.sidebar-section .top-bar-logo {
+
+  padding: 0;
+}
+
+.sidebar-section .top-bar-logo, .sidebar-section .top-bar-logo span {
+  color: $white;
+}
+
+.top-bar-logo::after {
+}
+
+.top-bar .top-bar-left {
+  display: inline-block;
+}
+
+.top-bar .top-bar-right .avatar {
+  margin-top: 0px;
+  margin-left: 10px;
+}
+
+.top-bar .top-bar-right .avatar img {
+  width: $top-bar-height;
+  border-color: $light-grey;
+  border-width: 0px;
+  border-left-width: 1px;
+}
+
+.top-bar .top-bar-menu-button {
+  position: relative;
+  top: 4px;
+  left: 6px;
+}
+
+.top-bar .inline-list li {
+  padding-left: 0px;
+  font-weight: 600;
+}
+
+.top-bar .inline-list li.first {
+ padding-left: 20px;
+}
+
+.top-bar .top-bar-left .sidebar-button {
+  position: absolute;
+  top: 21px;
+  right: $standard-padding;
+}
+
+.top-bar .top-bar-right {
+  float: right;
+  position: relative;
+  padding-left: $standard-padding;
+  padding-right: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.top-bar .top-bar-right .top-bar-logout {
+  position: absolute;
+  top: 26px;
+  right: $standard-padding;
+}
+
+.sparkline-header-container {
+  margin-top: 10px;
+  display: inline-block;
+  margin-right: $standard-padding;
+}
+
+.icon-topbar .fa {
+  top: 5px;
+  position: relative;
+  color: $dark-grey;
+}
+
+.icon-topbar .badge {
+  top: -10px;
+  left: -20px;
+  position: relative;
+}
+
+.sparkline-header-container:last-child {
+  margin-right: 0;
+}
+
+.header-sparkline-title {
+  display: block;
+  margin-top: 0;
+  font-weight: 600;
+  font-size: 15px;
+  color: $secondary-color;
+}
+
+.header-sparkline-title .mini {
+  font-weight: 300;
+  font-size: 12px;
+  color: $medium-grey;
+}
+
+.sidebar-button {
+  color: $light-grey;
+  @include transition(0.3s);
+}
+
+.sidebar-button.closed:hover {
+  color: $dark-grey;
+}
+
+.sidebar-button.closed {
+  color: $dark-grey;
+}
+
+.top-bar .top-bar-right div {
+  display: inline-block;
+margin-top: 3px;
+vertical-align: middle;
+}
+
+// Sidebar
+.off-canvas-wrapper {
+  background: $sidebar-background-colour;
+}
+
+
+.sidebar-personal-area {
+  padding-top: $standard-padding + 5px;
+  padding-left: $standard-padding;
+  padding-right: $standard-padding;
+  margin-bottom: $standard-padding + 10px;
+}
+
+.sidebar-personal-area img {
+  margin-right: 10px;
+  width: 45px;
+  height: 45px;
+}
+
+// Tables
+
+.data-table-a {
+  width: 100%;
+  border-bottom: 2px solid $secondary-color;
+}
+
+.data-table-a thead {
+  //background: $secondary-color;
+  background: none;
+  color: $dark-grey;
+  border-bottom: 1px solid $dark-grey;
+}
+
+.data-table-a th:nth-child(1) {
+  border-radius: 4px 0px 0px 0px;
+}
+
+.data-table-a th:nth-last-child(1) {
+  border-radius: 0px 4px 0px 0px;
+}
+
+.data-table-a thead tr th, .data-table-a tbody tr td {
+  padding-top: $standard-padding / 2;
+  padding-bottom: $standard-padding / 2;
+  padding-left: $standard-padding;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.data-table-a thead tr th {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.data-table-a thead tr th.sorted-by {
+  color: $primary-color;
+}
+
+.data-table-a thead tr th.sorted-by:after {
+  font-family: FontAwesome;
+  content: "\f0d8";
+  display: inline-block;
+  font-size: 14px;
+  padding-left: 5px;
+  padding-top: 0px;
+  vertical-align: top;
+}
+
+.data-table-a thead tr th.sorted-by.sorted-reverse:after {
+  content: "\f0d7";
+}
+
+.data-table-a tbody tr:nth-child(even) {
+  background: $white;
+}
+
+.data-table-a tbody tr:nth-child(odd) {
+  background: $off-white;
+}
+
+.data-table-a tbody tr:hover {
+  background: $lighter-grey;
+}
+
+.data-table-a tbody tr:active {
+  background: $primary-color;
+  color: $white;
+}
+
+.data-table-a tbody tr img {
+  width: 20px;
+  height: 20px;
+  @include border-radius(4px);
+  margin-top: -3px;
+  margin-right: 10px;
+}
+
+.data-table-a .highlight-row {
+  background: lighten($primary-color, 52) !important;
+  //color: $white;
+}
+
+.data-table-a .fa-envelope-unread {
+  color: $primary-color;
+}
+
+.data-table-a .fa-envelope-read {
+  color: $smoke;
+}
+
+.form-input-table {
+  width: 100%;
+}
+
+.form-input-table tr {
+  border-bottom: 1px solid $border-grey;
+}
+
+.form-input-table tr td {
+  padding-top: 15px;
+
+}
+
+.form-input-table tr td:first-child {
+  text-align: right;
+  padding-right: 15px;
+  vertical-align: middle;
+  padding-top: 0;
+  font-weight: 600;
+}
+
+// Vehicle Show / Edit
+
+.form-section {
+  margin-bottom: 30px;
+}
+
+.vehicle-image-border {
+  border: 2px solid $border-grey;
+}
+
+.vehicle-meta-area.border-bottom {
+  border-bottom: 1px solid $border-grey;
+}
+
+// Vehicle images
+.vehicle-image-gallery-wrapper {
+
+}
+
+.vehicle-image-gallery {
+  text-align: center;
+}
+
+.vehicle-image-gallery .gallery-item {
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  position: relative;
+}
+
+.vehicle-image-gallery .gallery-item img {
+  max-width: 280px;
+}
+
+.vehicle-image-gallery .gallery-item-thumbnail {
+  width: 100px;
+  height: 100px;
+}
+
+.vehicle-image-selector-delete-button {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  color: red;
+  z-index: 999;
+  @include transition(200ms);
+}
+
+.vehicle-image-selector-delete-button:hover {
+  font-size: 130%;
+}
+
+// Reviews
+
+.inline-index-rating {
+  color: #222222;
+  text-align: center;
+  display: block;
+  padding-right: 5px;
+  border-top: none;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.inline-index-rating.block
+{
+  text-align: left;
+  margin-bottom: 7px;
+}
+
+.inline-index-rating .fa-star {
+  color: #FFAF02;
+}
+
+.inline-index-rating .fa-star.secondary {
+  color: #DFE1E5;
+}
+
+// Reports
+
+.callout a {
+  //color: $secondary-color;
+  border-bottom: 1px solid $secondary-color;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+// Sections
+
+section.band-a {
+
+}
+
+.page-internal-nav {
+  background: $bottom-nav-background-colour;
+  border-top: 1px solid $light-grey;
+  z-index: 99999999;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  //padding-bottom: 10px;
+  //padding-top: 10px;
+  //padding-right: $sidebar-width-inital;
+//  -webkit-box-shadow: 0 -1px 5px 0 rgba(100,100,100,0.3);
+//box-shadow: 0 -1px 5px 0 rgba(100,100,100,0.3);
+}
+
+.page-internal-nav > div {
+  padding: 0;
+}
+
+.page-internal-nav button {
+  @include border-radius(0);
+  background-color: none;
+  background: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-transform: uppercase;
+  color: $medium-grey;
+}
+
+.page-internal-nav button i {
+  vertical-align: -5%;
+}
+
+//.page-internal-nav button.right-side {
+//   border-left: 1px solid $border-grey;
+//}
+//
+//.page-internal-nav button.left-side {
+//  border-right: 1px solid $border-grey;
+//}
+
+
+//footer
+
+footer {
+  margin-top: 40px;
+  padding-left: 173px;
+}
+
+.footer-media-motors-icon {
+  width: 30px;
+}
