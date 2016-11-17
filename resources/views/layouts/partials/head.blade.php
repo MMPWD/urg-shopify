@@ -2,7 +2,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <title>Mark's URG Shopiify Portal</title>
+    <title>Mark's Ugh Shopiify Portal</title>
 
     <BASE href="http://{!! $_SERVER['HTTP_HOST'] !!}/">
 

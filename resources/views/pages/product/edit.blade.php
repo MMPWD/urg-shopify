@@ -37,15 +37,17 @@
 
 @section('headings.left')
     <h1>
-        Edit {!! $product->product->title !!}
+        Product Show
     </h1>
 @endsection
 
 @section('headings.right')
     <div class="button-group">
-        <a class="button back" href="{!! route('product.index') !!}"><i class="fa fa-angle-left"></i> Back to Index</a>
-        <a class="button" href="{!! route('product.show', $product->product->id) !!}"><i class="fa fa-pencil"></i> Back to View</a>        
+        <a class="button" href="{!! route('product.index') !!}"><i class="fa fa-plus"></i> Back</a>
     </div>
+    <div class="button-group">
+        <a class="button" href="{!! route('product.edit', $product->product->id) !!}"><i class="fa fa-plus"></i> Edit</a>
+    </div>    
 @endsection
 
 

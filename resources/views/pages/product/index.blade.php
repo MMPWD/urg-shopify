@@ -37,7 +37,7 @@
 
 @section('headings.left')
     <h1>
-        Products
+        Productsa
     </h1>
 @endsection
 
@@ -93,9 +93,11 @@ foreach($products->products as $product) {
 ?>
                 <tr onclick="prodClick('<?php echo $product->id ?>');">
 
-                    <td class="hide-for-small-only"><?php echo $product->id ?></td>
-                    <td class="text-capitalize"><?php echo $product->title  ?></td> 
-                    <td class="hide-for-small-only"><?php echo substr($product->body_html,0,255)  ?></td> 
+
+
+                    <td class="text-capitalize"><?php echo $product->id ?></td>
+                    <td class="text-capitalize"<?php echo $product->title  ?></td> 
+                    <td class="hide-for-small-only"<?php echo substr($product->body_html,0,255)  ?></td> 
                     <td class="hide-for-small-only"><?php echo $product->variants[0]->sku  ?></td>
                     <td class="hide-for-small-only"><?php echo $product->variants[0]->price  ?></td>
                     <td class="hide-for-small-only"><?php echo $product->variants[0]->weight  ?></td>
