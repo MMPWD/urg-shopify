@@ -1,0 +1,4 @@
+<?php
+echo 'THIS IS A TEMP INDEX AND CAN SEAFELYT BE DELETED';
+phpoinfo();
+?>
