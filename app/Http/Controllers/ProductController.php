@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
  use Illuminate\Support\Facades\Redirect;
  use Illuminate\Support\Facades\Session;
 // use Illuminate\Support\Facades\Log;
-// use Intervention\Image\Facades\Image;
+ use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
@@ -51,7 +51,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {       
+    public function store(Requests\ProductCreationRequest $request) {       
 
       $shopify = $this->createShopifyObject();
 
@@ -61,7 +61,7 @@ class ProductController extends Controller
       'DATA'        => [
         'product' => [
           'title'  => $request->title,
-          'body_html'  => $request->body_html,
+          'body_html'  => $request->title,
           'variants' => [[
             'weight' => $request->weight,
             'sku' => $request->sku,
@@ -70,6 +70,67 @@ class ProductController extends Controller
         ]
       ]
     ]);
+
+
+
+  if( isset($request->fileUpload) ) {
+     $thisImage = $request->file('fileUpload');
+   // if(isset($_FILES['image'])) {
+        $errors=array();
+        $allowed_ext= array('jpg','jpeg','png','gif');
+        $file_name =$thisImage['name'];
+     //   $file_name =$_FILES['image']['tmp_name'];
+        $file_ext = strtolower( end(explode('.',$file_name)));
+
+
+        $file_size=$thisImage['size'];
+        $file_tmp= $thisImage['tmp_name'];
+        echo $file_tmp;echo "<br>";
+
+        $type = pathinfo($file_tmp, PATHINFO_EXTENSION);
+        $data = file_get_contents( $file_tmp );
+        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+        echo "Base64 is ".$base64;
+
+        if(in_array($file_ext,$allowed_ext) === false) {
+            $errors[]='Extension not allowed';
+        }
+
+        if($file_size > 2097152) {
+            $errors[]= 'File size must be under 2mb';
+
+        }
+        if(empty($errors)) {
+           if( move_uploaded_file($file_tmp, 'images/'.$file_name)){
+            echo 'File uploaded';
+           }
+        } else {
+            foreach($errors as $error) {
+                echo $error , '<br/>'; 
+            }
+        }
+  //  }
+
+ }
+
+
+
+
+
+
+echo '<pre>ID='.$result->product->id.'</pre>';
+// if there is an image then add it
+//       POST /admin/products/#{id}/images.json
+// {
+//   "image": {
+//     "position": 1,
+//     "attachment": "jagdkhagfjhgasfkjhgasdkfgasjhdfgashdfgasdhjfgajhsdfgkjashdfg
+//     ",
+//     "filename": "rails_logo.gif"
+//   }
+// }
+
+
 
 
       // Gets a list of products
@@ -130,35 +191,6 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-
-        //$file = $request->file('preview_image');
-
-
-
-
-// PUT /admin/products/#{id}.json
-// {
-//   "product": {
-//     "id": 632910392,
-//     "title": "Updated Product Title",
-//     "variants": [
-//       {
-//         "id": 808950810,
-//         "price": "2000.00",
-//         "sku": "Updating the Product SKU"
-//       },
-//       {
-//         "id": 49148385
-//       },
-//       {
-//         "id": 39072856
-//       },
-//       {
-//         "id": 457924702
-//       }
-//     ]
-//   }
-// }
 
       $shopify = $this->createShopifyObject();
 

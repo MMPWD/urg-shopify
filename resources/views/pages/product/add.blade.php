@@ -52,7 +52,7 @@
 
 @section('content')
     <div class="row bottom-gap" data-equalizer>
-    <form action="{!! route('product.store') !!}" method="post" id="mainForm" enctype="multipart/form-data">
+    <form action="{!! route('product.store') !!}" method="post" id="mainForm" enctype="multipart/form-data" data-abide novalidate >
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 
@@ -77,11 +77,11 @@
 
 
                 <div class="small-12 medium-6 columns">
-                    <label class="{!! ($errors->has('name')) ? 'is-invalid-label' : '' !!}">Name
+                    <label class="{!! ($errors->has('name')) ? 'is-invalid-label' : '' !!}">Title
                         <input type="text"
                                class="expanded {!! ($errors->has('title')) ? 'is-invalid-input' : '' !!}"
                                name="title"
-                               value="{!! old('title') !!}">
+                               value="{!! old('title') !!}" required>
                         @if($errors->has('title'))
                             <small class="form-error is-visible">{!! $errors->first('title') !!}</small>
                         @endif
@@ -91,11 +91,11 @@
                 <div class="small-12 medium-6 columns">
                     <label class="{!! ($errors->has('name')) ? 'is-invalid-label' : '' !!}">Description
                         <input type="text"
-                               class="expanded {!! ($errors->has('body_html')) ? 'is-invalid-input' : '' !!}"
-                               name="body_html"
-                               value="{!! old('body_html') !!}">
-                        @if($errors->has('body_html'))
-                            <small class="form-error is-visible">{!! $errors->first('body_html') !!}</small>
+                               class="expanded {!! ($errors->has('desc')) ? 'is-invalid-input' : '' !!}"
+                               name="desc"
+                               value="{!! old('desc') !!}">
+                        @if($errors->has('desc'))
+                            <small class="form-error is-visible">{!! $errors->first('desc') !!}</small>
                         @endif
                     </label>
                 </div>
@@ -147,24 +147,24 @@
 
 @endsection
 @section('scripts')
-
-<!--<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+<!--
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"
               integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
               crossorigin="anonymous" defer></script>
 <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
               integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
               crossorigin="anonymous" defer></script>
-            -->
+-->
 <script src="js/vendor/sweetalert-master/dist/sweetalert.min.js" defer></script>
 <link rel="stylesheet" type="text/css" href="js/vendor/sweetalert-master/dist/sweetalert.css">
 <!--<link rel="stylesheet" type="text/css" href="css/foundation.min.css">-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<!--<script src="js/vendor/foundation.min.js" defer></script>   -->           
+<script src="js/vendor/foundation.min.js" defer></script>
 <script src="js/app.js" defer></script>
 <script>
 $(document).ready(function () {
 
-//$(document).foundation();
+$(document).foundation();
 
 
     function readfiles(files) {
