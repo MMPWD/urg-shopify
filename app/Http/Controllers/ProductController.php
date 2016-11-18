@@ -21,39 +21,18 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-    ini_set('display_errors', 1);
-  // Code put here will run when you navigate to /show_products
-//  $sh = App::make('ShopifyAPI');
-  // $sh = App::make('ShopifyAPI', ['API_KEY' => '', 'API_SECRET' => '', 'SHOP_DOMAIN' => '']);
-  // This creates an instance of the Shopify API wrapper and
-  // authenticates our app.
+    public function index(Request $request) {
+      ini_set('display_errors', 1);
 
-  // $shopify = App::make('ShopifyAPI', [
-  //   'API_KEY' => 'ba7683f64f2cf40510bb3946bcaf40fe',
-  //   'API_SECRET' => '1ed3dfefc2231b3eb8d1eb6c1ce51a17',
-  //   'SHOP_DOMAIN' => 'ugh-shopify.myshopify.com',
-  //   'ACCESS_TOKEN' => 'd4038c3ae9bf31bb1d5d1b32ce7c17db'
-  // ]);
+      $shopify = $this->createShopifyObject();
 
-
-
-
-
-   //     if ($request->ajax()) {
-$shopify = $this->createShopifyObject();
-// Gets a list of products
-  $products = $shopify->call([
-    'METHOD'     => 'GET',
-    'URL'         => '/admin/products.json?page=1'
-  ]);
-      //      return json_encode($products);
-     //   }
-
+      // Gets a list of products
+      $products = $shopify->call([
+        'METHOD'     => 'GET',
+        'URL'         => '/admin/products.json?page=1'
+      ]);
 
     return view('pages.product.index', compact('products'));   
- //});
     }
 
     /**
@@ -104,14 +83,25 @@ $shopify = $this->createShopifyObject();
       'URL'         => '/admin/products.json',
       'DATA'        => [
         'product' => [
-          'title'  => 'New product title!',
-          'body_html'  => '<strong>Good snowboard!<\/strong>',
-          'weight' => '',
-          'sku' => '',
-          'price'  => '48'
+          'title'  => $request->title,
+          'body_html'  => $request->body_html,
+          'weight' => $request->weight,
+          'sku' => $request->sku,
+          'price'  => $request->price
         ]
       ]
     ]);
+
+
+      // Gets a list of products
+      $products = $shopify->call([
+        'METHOD'     => 'GET',
+        'URL'         => '/admin/products.json?page=1'
+      ]);
+
+    return view('pages.product.index', compact('products'));  
+
+
 
 
     }

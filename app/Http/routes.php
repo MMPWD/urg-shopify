@@ -22,7 +22,7 @@ Route::post('/product/{id}/update', array('as' => 'product.update', 'uses' => 'P
 
 
 Route::get('/add_product', array('as' => 'product.create', 'uses' => 'ProductController@create'));
-Route::post('/product/add', array('as' => 'product.store', 'uses' => 'ProductController@store'));
+Route::post('/add_product', array('as' => 'product.store', 'uses' => 'ProductController@store'));
 
 
   //, function() {
