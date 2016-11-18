@@ -190,7 +190,7 @@ echo '<pre>ID='.$result->product->id.'</pre>';
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) {
+    public function update(Requests\ProductUpdateRequest $request, $id) {
 
       $shopify = $this->createShopifyObject();
 
@@ -201,7 +201,7 @@ echo '<pre>ID='.$result->product->id.'</pre>';
         'product' => [
           'id' => $request->id,
           'title'  => $request->title,
-          'body_html'  => $request->body_html,
+          'body_html'  => $request->desc,
           'variants' => [[
             'weight' => $request->weight,
             'sku' => $request->sku,

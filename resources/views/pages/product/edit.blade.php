@@ -103,11 +103,11 @@
                 <div class="small-12 medium-6 columns">
                     <label class="{!! ($errors->has('name')) ? 'is-invalid-label' : '' !!}">Description
                         <input type="text"
-                               class="expanded {!! ($errors->has('body_html')) ? 'is-invalid-input' : '' !!}"
-                               name="body_html"
-                               value="{!! old('body_html',$product->product->body_html) !!}">
-                        @if($errors->has('body_html'))
-                            <small class="form-error is-visible">{!! $errors->first('body_html') !!}</small>
+                               class="expanded {!! ($errors->has('desc')) ? 'is-invalid-input' : '' !!}"
+                               name="desc"
+                               value="{!! old('desc',$product->product->body_html) !!}">
+                        @if($errors->has('desc'))
+                            <small class="form-error is-visible">{!! $errors->first('desc') !!}</small>
                         @endif
                     </label>
                 </div>
