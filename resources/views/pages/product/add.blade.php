@@ -77,7 +77,7 @@
 
 
                 <div class="small-12 medium-6 columns">
-                    <label class="{!! ($errors->has('name')) ? 'is-invalid-label' : '' !!}">Title
+                    <label class="{!! ($errors->has('name')) ? 'is-invalid-label' : '' !!}">Name / Title
                         <input type="text"
                                class="expanded {!! ($errors->has('title')) ? 'is-invalid-input' : '' !!}"
                                name="title"

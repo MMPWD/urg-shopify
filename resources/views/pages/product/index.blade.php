@@ -58,11 +58,11 @@
                 <thead>
                 <tr>
 
-                    <th v-on:click="sortBy('id')"
+                    <th v-on:click="sortBy('id')" class="hide-for-small-only"
                         v-bind:class="{ 'sorted-by' : isSortedBy('id'), 'sorted-reverse' : isSortedReversed() }">
                         id
                     </th>
-                    <th v-on:click="sortBy('name')" class="hide-for-small-only"
+                    <th v-on:click="sortBy('name')" 
                         v-bind:class="{ 'sorted-by' : isSortedBy('title'), 'sorted-reverse' : isSortedReversed() }">
                         Name
                     </th>    
@@ -78,7 +78,7 @@
                         v-bind:class="{ 'sorted-by' : isSortedBy('price'), 'sorted-reverse' : isSortedReversed() }">
                         Price
                     </th>
-                    <th v-on:click="sortBy('price')"
+                    <th v-on:click="sortBy('weight')" class="hide-for-small-only"
                         v-bind:class="{ 'sorted-by' : isSortedBy('weight'), 'sorted-reverse' : isSortedReversed() }">
                         Weight
                     </th>
@@ -97,30 +97,14 @@ foreach($products->products as $product) {
                     <td class="text-capitalize"><?php echo $product->title  ?></td> 
                     <td class="hide-for-small-only"><?php echo substr($product->body_html,0,255)  ?></td> 
                     <td class="hide-for-small-only"><?php echo $product->variants[0]->sku  ?></td>
-                    <td class="hide-for-small-only"><?php echo $product->variants[0]->price  ?></td>
+                    <td><?php echo $product->variants[0]->price  ?></td>
                     <td class="hide-for-small-only"><?php echo $product->variants[0]->weight  ?></td>
 
                 </tr>
 <?php
  }
 ?>
-<!--
-                <tr v-for="product in items | filterByListSelection | filterByCustom listFilter | orderBy sortKey sortReverse | limitBy listCount"
-                    transition="expand" v-on:click="selectListItem(product)">
 
-                    <td v-on:click="toggleRead(product,$event)" v-if="product.opened == 0" class="hide-for-small-only" alt="Unread"><i class="fa fa-fw fa-lg fa-envelope fa-envelope-unread"></i></td>
-                    <td v-on:click="toggleRead(product,$event)" v-if="product.opened == 1" class="hide-for-small-only" alt="Read"><i class="fa fa-fw fa-lg fa-envelope-o fa-envelope-read"></i></td>
-
-                    <td class="text-capitalize">@{{ product.id }}</td>
-                    <td class="hide-for-small-only">@{{ product.sku }}</td>
-                    <td class="text-capitalize">@{{ product.name }}</td>                    
-					<td class="hide-for-small-only">@{{ product.description }}</td>
-                    <td class="hide-for-small-only">@{{ product.price }}</td>
-
-                </tr>
-
-
--->
 
                 </tbody>
             </table>

@@ -61,7 +61,7 @@ class ProductController extends Controller
       'DATA'        => [
         'product' => [
           'title'  => $request->title,
-          'body_html'  => $request->title,
+          'body_html'  => $request->desc,
           'variants' => [[
             'weight' => $request->weight,
             'sku' => $request->sku,
@@ -118,7 +118,7 @@ class ProductController extends Controller
 
 
 
-echo '<pre>ID='.$result->product->id.'</pre>';
+//echo '<pre>ID='.$result->product->id.'</pre>';
 // if there is an image then add it
 //       POST /admin/products/#{id}/images.json
 // {

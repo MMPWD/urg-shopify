@@ -89,7 +89,7 @@
 
 
                 <div class="small-12 medium-6 columns">
-                    <label class="{!! ($errors->has('name')) ? 'is-invalid-label' : '' !!}">Name
+                    <label class="{!! ($errors->has('name')) ? 'is-invalid-label' : '' !!}">Name / Title
                         <input type="text"
                                class="expanded {!! ($errors->has('title')) ? 'is-invalid-input' : '' !!}"
                                name="title"
@@ -107,7 +107,7 @@
                                name="desc"
                                value="{!! old('desc',$product->product->body_html) !!}">
                         @if($errors->has('desc'))
-                            <small class="form-error is-visible">{!! $errors->first('desc') !!}</small>
+                            <small class="form-error is-visible">{!! $errors->first('Description') !!}</small>
                         @endif
                     </label>
                 </div>

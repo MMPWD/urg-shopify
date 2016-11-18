@@ -56,8 +56,8 @@
 
 <?php //echo '<pre>'. print_r($product->product,true).'</pre>'; ?>
     <div class="row bottom-gap" data-equalizer>
-            <div class="small-12 large-6 columns" data-equalizer-watch>
-                <img class="res vehicle-image-border" 
+        <div class="small-12 large-6 columns" data-equalizer-watch>
+            <img class="res vehicle-image-border" 
 
 @if (isset($product->product->image->src))
     src="{!! $product->product->image->src !!}" alt="">
@@ -65,33 +65,67 @@
     src="{!! 'https://placehold.it/767x374' !!}" alt="">
 @endif
 
-                <div class="hide-for-large">
-                    <br/>
-                    <br/>
-                </div>
-            </div>
-
+        </div>
 
         <div class="small-12 large-6 columns vehicle-show-details">
 
             <div class="callout" data-equalizer-watch>
-                <table>                 
 
-                    <tr><td colspan='100%'><h3 class="title">{!! $product->product->title !!}</h3></td></tr>
-                    <tr><td>ID:</td><td>{!! $product->product->id !!}<td></tr>
-                    <tr><td>Body HTML:</td><td>{!! $product->product->body_html !!}<td></tr>
-                    <tr><td>Price:</td><td>{!! $product->product->variants[0]->price !!}<td></tr>
-                    <tr><td>SKU:</td><td>{!! $product->product->variants[0]->sku !!}<td></tr>
-                    <tr><td>Weight:</td><td>{!! $product->product->variants[0]->weight !!}<td></tr>
-                </table>
+                <div class="row">
+                    <div class="small-12 columns">
+                        <h3 class="title">{!! $product->product->title !!}</h3>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="small-6 large-2 columns vehicle-show-details">
+                        <span>ID:</span>
+                    </div>
+                    <div class="small-6 large-4 columns vehicle-show-details">
+                        <span>{!! $product->product->id !!}</span>
+                    </div>
+                </div>                        
+
+                <div class="row">
+                    <div class="small-6 large-2 columns vehicle-show-details">
+                        <span>Description:</span>
+                    </div>
+                    <div class="small-6 large-4 columns vehicle-show-details">
+                        <span>{!! $product->product->body_html !!}</span>
+                    </div>
+                </div>  
+
+                <div class="row">
+                    <div class="small-6 large-2 columns vehicle-show-details">
+                        <span>Price:</span>
+                    </div>
+                    <div class="small-6 large-4 columns vehicle-show-details">
+                        <span>{!! $product->product->variants[0]->price !!}</span>
+                    </div>
+                </div>  
+
+                 <div class="row">
+                    <div class="small-6 large-2 columns vehicle-show-details">
+                        <span>SKU:</span>
+                    </div>
+                    <div class="small-6 large-4 columns vehicle-show-details">
+                        <span>{!! $product->product->variants[0]->sku !!}</span>
+                    </div>
+                </div>  
+
+                <div class="row">
+                    <div class="small-6 large-2 columns vehicle-show-details">
+                        <span>Weight:</span>
+                    </div>
+                    <div class="small-6 large-4 columns vehicle-show-details">
+                        <span>{!! $product->product->variants[0]->weight !!}</span>
+                    </div>
+                </div>                  
+
             </div>
         </div>
 
     </div>
-
-
-
-
 
 
 @endsection
