@@ -47,7 +47,7 @@
 
         <div class="container">
             <div class="content">
-                <div class="title">Marks URG Shopify Admin Portal</div>
+                <div class="title">Mark's URG Shopify Admin Portal</div>
                 <div><br /></div>
                 <h2>Welcome to Heaven. Click a link below to proceed</h2>
                 <div><a href='/show_products'>See Products</a></div>
@@ -55,7 +55,8 @@
                 <div><br /></div>
                 <div><br /></div>
                 <div><br /></div>
-                <div><b><h1>Work In Progress. Expected release 11:00 18th November 2016</h1></b></div>
+                <div><b><h1>Release Notes</h1></b></div>
+                <div>Image drag and drop: Somewhere between dev and upload the image functionality has broken. Watch this space.</div>
             </div>
         </div>
 

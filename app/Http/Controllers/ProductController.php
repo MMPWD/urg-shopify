@@ -52,29 +52,6 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {       
-        // $file = $request->file('preview_image');
-        // $post = new Post();
-        // $inputToUpdate = $request->all();
-
-        // if (isset($inputToUpdate['published_on'])) {
-        //     if ($inputToUpdate['published_on'] == null || $inputToUpdate['published_on'] == '' || $inputToUpdate['published_on'] == 'Not Set') {
-        //         $inputToUpdate['published_on'] = null;
-        //     } else {
-        //         $inputToUpdate['published_on'] = convertDateToDb($inputToUpdate['published_on']);
-        //     }
-        // }
-
-        // $post->fill($inputToUpdate);
-        // $post->business_id = Session::get('selectedBusiness')->id;
-        // $post->user_id = Auth::user()->id;
-
-        // if ($request->file('preview_image')) {
-        //     $post = $this->savePreviewImage($request->file('preview_image'), $post);
-        // }
-        // $post->save();
-
-        // return Redirect::route('post.edit', $post->id);
-
 
       $shopify = $this->createShopifyObject();
 
@@ -85,9 +62,11 @@ class ProductController extends Controller
         'product' => [
           'title'  => $request->title,
           'body_html'  => $request->body_html,
-          'weight' => $request->weight,
-          'sku' => $request->sku,
-          'price'  => $request->price
+          'variants' => [[
+            'weight' => $request->weight,
+            'sku' => $request->sku,
+            'price'  => $request->price
+            ]]
         ]
       ]
     ]);
@@ -99,11 +78,7 @@ class ProductController extends Controller
         'URL'         => '/admin/products.json?page=1'
       ]);
 
-    return view('pages.product.index', compact('products'));  
-
-
-
-
+    return view('pages.product.index', compact('products'));
     }
 
     /**
@@ -156,39 +131,92 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id) {
 
-        $file = $request->file('preview_image');
-        $post = Post::find($id);
-         
-        $inputToUpdate = $request->all();
-        if (isset($inputToUpdate['published_on'])) {
-            if ($inputToUpdate['published_on'] == null || $inputToUpdate['published_on'] == '' || $inputToUpdate['published_on'] == 'Not Set') {
-                $inputToUpdate['published_on'] = null;
-            } else {
-                $inputToUpdate['published_on'] = convertDateToDb($inputToUpdate['published_on']);
-            }
-        }
-        $post->fill($inputToUpdate);
+        //$file = $request->file('preview_image');
 
-        if ($request->file('preview_image')) {
-            $post = $this->savePreviewImage($request->file('preview_image'), $post);
-        }
-        $post->save();
 
-        return Redirect::route('post.edit', $post->id);
+
+
+// PUT /admin/products/#{id}.json
+// {
+//   "product": {
+//     "id": 632910392,
+//     "title": "Updated Product Title",
+//     "variants": [
+//       {
+//         "id": 808950810,
+//         "price": "2000.00",
+//         "sku": "Updating the Product SKU"
+//       },
+//       {
+//         "id": 49148385
+//       },
+//       {
+//         "id": 39072856
+//       },
+//       {
+//         "id": 457924702
+//       }
+//     ]
+//   }
+// }
+
+      $shopify = $this->createShopifyObject();
+
+      $result = $shopify->call([
+      'METHOD'      => 'PUT',
+      'URL'         => '/admin/products/'.$id.'.json',
+      'DATA'        => [
+        'product' => [
+          'id' => $request->id,
+          'title'  => $request->title,
+          'body_html'  => $request->body_html,
+          'variants' => [[
+            'weight' => $request->weight,
+            'sku' => $request->sku,
+            'price'  => $request->price
+            ]]
+        ]
+      ]
+    ]);
+
+
+
+
+
+      $product = $shopify->call([
+      'METHOD'      => 'GET',
+      'URL'         => '/admin/products/'.$id.'.json'
+    ]);
+
+
+        return view('pages.product.show', compact('product'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id) {
+      $shopify = $this->createShopifyObject();
+
+      $result = $shopify->call([
+        'METHOD'      => 'DELETE',
+        'URL'         => '/admin/products/'.$id.'.json',
+      ]);
+
+      // Gets a list of products
+      $products = $shopify->call([
+        'METHOD'     => 'GET',
+        'URL'         => '/admin/products.json?page=1'
+      ]);
+
+      return view('pages.product.index', compact('products'));  
     }
 
 
-
-
-
 private function createShopifyObject() {
-  // old ugh
-  //    $s = App::make('ShopifyAPI', [
-  //   'API_KEY' => 'ba7683f64f2cf40510bb3946bcaf40fe',
-  //   'API_SECRET' => '1ed3dfefc2231b3eb8d1eb6c1ce51a17',
-  //   'SHOP_DOMAIN' => 'ugh-shopify.myshopify.com',
-  //   'ACCESS_TOKEN' => 'd4038c3ae9bf31bb1d5d1b32ce7c17db'
-  // ]);
      $s = App::make('ShopifyAPI', [
     'API_KEY' => '9894caa0dfeea24fa0072bbd742d8b4d',
     'API_SECRET' => '8cce588d82d90374e4ccd9f646097de7',
@@ -198,14 +226,5 @@ private function createShopifyObject() {
      return $s;
 }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
 }

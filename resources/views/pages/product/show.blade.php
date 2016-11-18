@@ -45,6 +45,7 @@
     <div class="button-group">
         <a class="button back" href="{!! route('product.index') !!}"><i class="fa fa-angle-left"></i> Back</a>
         <a class="button" href="{!! route('product.edit', $product->product->id) !!}"><i class="fa fa-pencil"></i> Edit</a>
+        <a class="button" href="{!! route('product.destroy', $product->product->id) !!}"><i class="fa fa-angle-left"></i> Delete</a>
 
     </div>   
 @endsection
@@ -53,6 +54,7 @@
 
 @section('content')
 
+<?php //echo '<pre>'. print_r($product->product,true).'</pre>'; ?>
     <div class="row bottom-gap" data-equalizer>
             <div class="small-12 large-6 columns" data-equalizer-watch>
                 <img class="res vehicle-image-border" 
