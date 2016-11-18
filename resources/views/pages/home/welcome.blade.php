@@ -52,6 +52,10 @@
                 <h2>Welcome to Heaven. Click a link below to proceed</h2>
                 <div><a href='/show_products'>See Products</a></div>
                 <div><a href='/add_product'>Add Product</a></div>
+                <div><br /></div>
+                <div><br /></div>
+                <div><br /></div>
+                <div><b><h1>Work In Progress. Expected release 11:00 18th November 2016</h1></b></div>
             </div>
         </div>
 

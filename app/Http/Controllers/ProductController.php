@@ -63,7 +63,6 @@ $shopify = $this->createShopifyObject();
      */
     public function create()
     {
-        //return view('pages.post.create');
           return view('pages.product.add');
     }
 

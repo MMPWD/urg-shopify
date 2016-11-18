@@ -20,6 +20,11 @@ Route::get('/product/{id}', array('as' => 'product.show', 'uses' => 'ProductCont
 Route::get('/product/{id}/edit', array('as' => 'product.edit', 'uses' => 'ProductController@edit'));
 Route::post('/product/{id}/update', array('as' => 'product.update', 'uses' => 'ProductController@update'));
 
+
+Route::get('/add_product', array('as' => 'product.create', 'uses' => 'ProductController@create'));
+Route::post('/product/add', array('as' => 'product.store', 'uses' => 'ProductController@store'));
+
+
   //, function() {
 
 
@@ -64,8 +69,7 @@ Route::post('/product/{id}/update', array('as' => 'product.update', 'uses' => 'P
 
 
 
-Route::get('/add_product', array('as' => 'product.create', 'uses' => 'ProductController@create'));
-Route::post('/add_product', array('as' => 'product.create', 'uses' => 'ProductController@create'));
+
 //   // Code put here will run when you navigate to /show_products
 // //	$sh = App::make('ShopifyAPI');
 //   // $sh = App::make('ShopifyAPI', ['API_KEY' => '', 'API_SECRET' => '', 'SHOP_DOMAIN' => '']);
