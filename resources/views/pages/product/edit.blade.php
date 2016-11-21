@@ -154,9 +154,7 @@
          
                 <div class="small-12 large-6 columns" >
                     <div id="drop-zone">
-                        Drop files here...
-                        <div id="clickHere">
-                            or click here..   
+                        Drop files here... 
                             <input type="file" name="fileUpload" class="image-provider-a" />
                             <!--<div class="small-6 columns end" id="holder" style="width:200px; height:200px; border: 10px dashed #ccc">-->
                                 <img class="res image-holder-a" 
@@ -165,7 +163,7 @@
 @else
     src="{!! 'https://placehold.it/767x374' !!}" alt="">
 @endif         
-                        </div>
+
 
                     </div>
                  </div>
@@ -256,11 +254,22 @@
 
     <script type="text/javascript">
 
+
+
+// Check for the various File API support.
+if (window.File && window.FileReader && window.FileList && window.Blob) {
+  console.log('yay');
+} else {
+  console.log('The File APIs are not fully supported in this browser.');
+}
+
+
+
         // Read input image and display
         function readImage(input, elem) {
 
             elem = $(".image-holder-a");
-            console.log(elem);
+            console.log('e'+elem);
 
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -283,7 +292,7 @@
 
 $(function () {
     var dropZoneId = "drop-zone";
-    var buttonId = "clickHere";
+ //   var buttonId = "clickHere";
     var mouseOverClass = "mouse-over";
 
     var dropZone = $("#" + dropZoneId);
@@ -307,24 +316,24 @@ $(function () {
 
     }, true);
 
-    if (buttonId != "") {
-        var clickZone = $("#" + buttonId);
+    // if (buttonId != "") {
+    //     var clickZone = $("#" + buttonId);
 
-        var oleft = clickZone.offset().left;
-        var oright = clickZone.outerWidth() + oleft;
-        var otop = clickZone.offset().top;
-        var obottom = clickZone.outerHeight() + otop;
+    //     var oleft = clickZone.offset().left;
+    //     var oright = clickZone.outerWidth() + oleft;
+    //     var otop = clickZone.offset().top;
+    //     var obottom = clickZone.outerHeight() + otop;
 
-        $("#" + buttonId).mousemove(function (e) {
-            var x = e.pageX;
-            var y = e.pageY;
-            if (!(x < oleft || x > oright || y < otop || y > obottom)) {
-                inputFile.offset({ top: y - 15, left: x - 160 });
-            } else {
-                inputFile.offset({ top: -400, left: -400 });
-            }
-        });
-    }
+    //     $("#" + buttonId).mousemove(function (e) {
+    //         var x = e.pageX;
+    //         var y = e.pageY;
+    //         if (!(x < oleft || x > oright || y < otop || y > obottom)) {
+    //             inputFile.offset({ top: y - 15, left: x - 160 });
+    //         } else {
+    //             inputFile.offset({ top: -400, left: -400 });
+    //         }
+    //     });
+    // }
 
     document.getElementById(dropZoneId).addEventListener("drop", function (e) {
         $("#" + dropZoneId).removeClass(mouseOverClass);

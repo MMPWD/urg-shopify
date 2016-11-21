@@ -156,11 +156,8 @@
                 <div class="small-12 large-6 columns" >
                     <div id="drop-zone">
                         Drop files here...
-                        <div id="clickHere">
-                            or click here..   
                             <input type="file" name="fileUpload" class="image-provider-a" />
                                 <img class="res image-holder-a"" alt="">        
-                        </div>
                     </div>
                  </div>
             </div>
@@ -252,7 +249,7 @@
         function readImage(input, elem) {
 
             elem = $(".image-holder-a");
-            console.log(elem);
+            console.log('e'+elem);
 
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -294,7 +291,7 @@
 
 $(function () {
     var dropZoneId = "drop-zone";
-    var buttonId = "clickHere";
+    //var buttonId = "clickHere";
     var mouseOverClass = "mouse-over";
 
     var dropZone = $("#" + dropZoneId);
@@ -318,30 +315,36 @@ $(function () {
 
     }, true);
 
-    if (buttonId != "") {
-        var clickZone = $("#" + buttonId);
+    // if (buttonId != "") {
+    //     var clickZone = $("#" + buttonId);
 
-        var oleft = clickZone.offset().left;
-        var oright = clickZone.outerWidth() + oleft;
-        var otop = clickZone.offset().top;
-        var obottom = clickZone.outerHeight() + otop;
+    //     var oleft = clickZone.offset().left;
+    //     var oright = clickZone.outerWidth() + oleft;
+    //     var otop = clickZone.offset().top;
+    //     var obottom = clickZone.outerHeight() + otop;
 
-        $("#" + buttonId).mousemove(function (e) {
-            var x = e.pageX;
-            var y = e.pageY;
-            if (!(x < oleft || x > oright || y < otop || y > obottom)) {
-                inputFile.offset({ top: y - 15, left: x - 160 });
-            } else {
-                inputFile.offset({ top: -400, left: -400 });
-            }
-        });
-    }
+    //     $("#" + buttonId).mousemove(function (e) {
+    //         var x = e.pageX;
+    //         var y = e.pageY;
+    //         if (!(x < oleft || x > oright || y < otop || y > obottom)) {
+    //             inputFile.offset({ top: y - 15, left: x - 160 });
+    //         } else {
+    //             inputFile.offset({ top: -400, left: -400 });
+    //         }
+    //     });
+    // }
 
     document.getElementById(dropZoneId).addEventListener("drop", function (e) {
         $("#" + dropZoneId).removeClass(mouseOverClass);
     }, true);
 
 })
+// Check for the various File API support.
+if (window.File && window.FileReader && window.FileList && window.Blob) {
+  console.log('yay');
+} else {
+  console.log('The File APIs are not fully supported in this browser.');
+}
 
 <script>
 @endsection
