@@ -53,85 +53,47 @@ class ProductController extends Controller
      */
     public function store(Requests\ProductCreationRequest $request) {       
 
+      // Instantiate the shopify api object
       $shopify = $this->createShopifyObject();
 
+      // Write the [roducts details to shopify]
       $result = $shopify->call([
       'METHOD'      => 'POST',
       'URL'         => '/admin/products.json',
       'DATA'        => [
         'product' => [
           'title'  => $request->title,
-          'body_html'  => $request->desc,
+          'body_html'  => $request->desc, 
           'variants' => [[
             'weight' => $request->weight,
             'sku' => $request->sku,
             'price'  => $request->price
             ]]
+          ]
         ]
-      ]
-    ]);
+      ]);
 
+      // Get the product ID from the curl response 
+      $productID = $result->product->id;
 
+      // Do the image add separately as there may be a problem with the shopify image api
+      if( isset($request->fileUpload) ) {
+        $thisImage = $request->file('fileUpload');
+        $name = $thisImage->getClientOriginalName();
+        $thisImage->move('/tmp', $name);
+        $data = file_get_contents( '/tmp/'. $name );
+        $base64 =  base64_encode($data);
 
-  if( isset($request->fileUpload) ) {
-     $thisImage = $request->file('fileUpload');
-   // if(isset($_FILES['image'])) {
-        $errors=array();
-        $allowed_ext= array('jpg','jpeg','png','gif');
-        $file_name =$thisImage['name'];
-     //   $file_name =$_FILES['image']['tmp_name'];
-        $file_ext = strtolower( end(explode('.',$file_name)));
-
-
-        $file_size=$thisImage['size'];
-        $file_tmp= $thisImage['tmp_name'];
-        echo $file_tmp;echo "<br>";
-
-        $type = pathinfo($file_tmp, PATHINFO_EXTENSION);
-        $data = file_get_contents( $file_tmp );
-        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-        echo "Base64 is ".$base64;
-
-        if(in_array($file_ext,$allowed_ext) === false) {
-            $errors[]='Extension not allowed';
-        }
-
-        if($file_size > 2097152) {
-            $errors[]= 'File size must be under 2mb';
-
-        }
-        if(empty($errors)) {
-           if( move_uploaded_file($file_tmp, 'images/'.$file_name)){
-            echo 'File uploaded';
-           }
-        } else {
-            foreach($errors as $error) {
-                echo $error , '<br/>'; 
-            }
-        }
-  //  }
-
- }
-
-
-
-
-
-
-//echo '<pre>ID='.$result->product->id.'</pre>';
-// if there is an image then add it
-//       POST /admin/products/#{id}/images.json
-// {
-//   "image": {
-//     "position": 1,
-//     "attachment": "jagdkhagfjhgasfkjhgasdkfgasjhdfgashdfgasdhjfgajhsdfgkjashdfg
-//     ",
-//     "filename": "rails_logo.gif"
-//   }
-// }
-
-
-
+        $result2 = $shopify->call([
+        'METHOD'      => 'POST',
+        'URL'         => '/admin/products/'.$productID.'/images.json',
+        'DATA'        => [
+              'image' => [
+               "attachment" => $base64
+            ]
+          ]
+        ]);
+      }
 
       // Gets a list of products
       $products = $shopify->call([
@@ -139,8 +101,12 @@ class ProductController extends Controller
         'URL'         => '/admin/products.json?page=1'
       ]);
 
-    return view('pages.product.index', compact('products'));
+      // Return the index view
+      return view('pages.product.index', compact('products'));
     }
+
+
+
 
     /**
      * Display the specified resource.
@@ -148,11 +114,7 @@ class ProductController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-
-
-
+    public function show($id) {
 
       $shopify = $this->createShopifyObject();
 
@@ -211,7 +173,46 @@ class ProductController extends Controller
       ]
     ]);
 
+      // Do the image add separately as there may be a problem with the shopify image api
+      if( isset($request->fileUpload) ) {
 
+          // see if there are any images
+        $images = $shopify->call([
+        'METHOD'      => 'GET',
+        'URL'         => '/admin/products/'.$id.'/images.json'
+            ]);
+
+        // if there was an image then get its image id.
+        if(count($images->images) > 0 ) {
+
+        //echo '<pre>'.$images->images[0]->id.'</pre>';
+
+        // delete the image
+
+        $deleteImages = $shopify->call([
+        'METHOD'      => 'DELETE',
+        'URL'         => '/admin/products/'.$id.'/images/'.$images->images[0]->id.'.json'
+            ]);
+      }
+
+      // now, reghardless we can add the new image
+
+        $thisImage = $request->file('fileUpload');
+        $name = $thisImage->getClientOriginalName();
+        $thisImage->move('/tmp', $name);
+        $data = file_get_contents( '/tmp/'. $name );
+        $base64 =  base64_encode($data);
+
+        $result2 = $shopify->call([
+        'METHOD'      => 'POST',
+        'URL'         => '/admin/products/'.$id.'/images.json',
+        'DATA'        => [
+              'image' => [
+               "attachment" => $base64
+            ]
+          ]
+        ]);
+      }
 
 
 
@@ -220,6 +221,7 @@ class ProductController extends Controller
       'URL'         => '/admin/products/'.$id.'.json'
     ]);
 
+//echo '<pre>'.print_r($images,true).'</pre>';
 
         return view('pages.product.show', compact('product'));
     }

@@ -50,8 +50,8 @@
                 <div class="title">Mark's URG Shopify Admin Portal</div>
                 <div><br /></div>
                 <h2>Welcome to Heaven. Click a link below to proceed</h2>
-                <div><a href='/show_products'>See Products</a></div>
-                <div><a href='/add_product'>Add Product</a></div>
+                <h3><a href='/show_products'>See Products</a></h3>
+                <h3><a href='/add_product'>Add Product</a></h3>
                 <div><br /></div>
                 <div><br /></div>
                 <div><br /></div>

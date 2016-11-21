@@ -31,6 +31,81 @@
             .title {
                 font-size: 96px;
             }
+
+
+
+
+
+
+
+#drop-zone {
+    /*Sort of important*/
+    width: 300px;
+    /*Sort of important*/
+    height: 200px;
+    position:absolute;
+    left:50%;
+    top:100px;
+    margin-left:-150px;
+    border: 2px dashed rgba(0,0,0,.3);
+    border-radius: 20px;
+    font-family: Arial;
+    text-align: center;
+    position: relative;
+    line-height: 180px;
+    font-size: 20px;
+    color: rgba(0,0,0,.3);
+}
+
+    #drop-zone input {
+        /*Important*/
+        position: absolute;
+        /*Important*/
+        cursor: pointer;
+        left: 0px;
+        top: 0px;
+        /*Important This is only comment out for demonstration purposes.
+        opacity:0; */
+    }
+
+    /*Important*/
+    #drop-zone.mouse-over {
+        border: 2px dashed rgba(0,0,0,.5);
+        color: rgba(0,0,0,.5);
+    }
+
+
+/*If you dont want the button*/
+#clickHere {
+    position: absolute;
+    cursor: pointer;
+    left: 50%;
+    top: 50%;
+    margin-left: -50px;
+    margin-top: 20px;
+    line-height: 26px;
+    color: white;
+    font-size: 12px;
+    width: 100px;
+    height: 26px;
+    border-radius: 4px;
+    background-color: #3b85c3;
+
+}
+
+    #clickHere:hover {
+        background-color: #4499DD;
+
+    }
+
+
+
+
+
+
+
+
+
         </style>
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 @endsection
@@ -53,32 +128,47 @@
 
 @section('content')
 
-
-
-
-
-
     <div class="row bottom-gap" data-equalizer>
     <form action="{!! route('product.update',$product->product->id) !!}" method="post" id="mainForm" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" name="id" value="{{ $product->product->id }}">
 
 
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+
+
         @include('layouts.elements.errorBox')
 
         <div class="form-section">
             <div class="small-12 large-6 columns" data-equalizer-watch>
-                               <!--
-                    <input type="file" name="fileUpload" />
-                    <div class="small-6 columns end" id="holder" style="width:200px; height:200px; border: 10px dashed #ccc"></div>
-                    -->
-                <img class="res vehicle-image-border" 
+         
+                <div class="small-12 large-6 columns" >
+                    <div id="drop-zone">
+                        Drop files here...
+                        <div id="clickHere">
+                            or click here..   
+                            <input type="file" name="fileUpload" class="image-provider-a" />
+                            <!--<div class="small-6 columns end" id="holder" style="width:200px; height:200px; border: 10px dashed #ccc">-->
+                                <img class="res image-holder-a" 
 @if (isset($product->product->image->src))
     src="{!! $product->product->image->src !!}" alt="">
 @else
     src="{!! 'https://placehold.it/767x374' !!}" alt="">
-@endif                    
+@endif         
+                        </div>
 
+                    </div>
+                 </div>
             </div>
 
             <div class="small-12 large-6 columns vehicle-show-details">
@@ -163,6 +253,86 @@
 
 @endsection
 @section('scripts')
+
+    <script type="text/javascript">
+
+        // Read input image and display
+        function readImage(input, elem) {
+
+            elem = $(".image-holder-a");
+            console.log(elem);
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    elem.attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // display input image before upload.
+        $(".image-provider-a").change(function () {
+            readImage(this, $(this));
+        });
+
+
+  
+
+$(function () {
+    var dropZoneId = "drop-zone";
+    var buttonId = "clickHere";
+    var mouseOverClass = "mouse-over";
+
+    var dropZone = $("#" + dropZoneId);
+    var ooleft = dropZone.offset().left;
+    var ooright = dropZone.outerWidth() + ooleft;
+    var ootop = dropZone.offset().top;
+    var oobottom = dropZone.outerHeight() + ootop;
+    var inputFile = dropZone.find("input");
+    document.getElementById(dropZoneId).addEventListener("dragover", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.addClass(mouseOverClass);
+        var x = e.pageX;
+        var y = e.pageY;
+
+        if (!(x < ooleft || x > ooright || y < ootop || y > oobottom)) {
+            inputFile.offset({ top: y - 15, left: x - 100 });
+        } else {
+            inputFile.offset({ top: -400, left: -400 });
+        }
+
+    }, true);
+
+    if (buttonId != "") {
+        var clickZone = $("#" + buttonId);
+
+        var oleft = clickZone.offset().left;
+        var oright = clickZone.outerWidth() + oleft;
+        var otop = clickZone.offset().top;
+        var obottom = clickZone.outerHeight() + otop;
+
+        $("#" + buttonId).mousemove(function (e) {
+            var x = e.pageX;
+            var y = e.pageY;
+            if (!(x < oleft || x > oright || y < otop || y > obottom)) {
+                inputFile.offset({ top: y - 15, left: x - 160 });
+            } else {
+                inputFile.offset({ top: -400, left: -400 });
+            }
+        });
+    }
+
+    document.getElementById(dropZoneId).addEventListener("drop", function (e) {
+        $("#" + dropZoneId).removeClass(mouseOverClass);
+    }, true);
+
+})
+
+  </script>
 
 
 @endsection

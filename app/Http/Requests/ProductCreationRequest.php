@@ -26,9 +26,9 @@ class ProductCreationRequest extends Request
         return [
             'title' => 'required',
             'desc' => 'required',
-            'price' => 'required',
+            'price' => 'required|numeric',
             'sku' => 'required',
-            'weight' => 'required'
+            'weight' => 'required|numeric'
         ];
     }
 }
