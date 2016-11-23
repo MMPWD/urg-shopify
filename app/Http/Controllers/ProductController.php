@@ -250,15 +250,15 @@ class ProductController extends Controller
     }
 
 
+  
 private function createShopifyObject() {
-     $s = App::make('ShopifyAPI', [
-    'API_KEY' => '9894caa0dfeea24fa0072bbd742d8b4d',
-    'API_SECRET' => '8cce588d82d90374e4ccd9f646097de7',
-    'SHOP_DOMAIN' => 'urg-test-shop.myshopify.com',
-    'ACCESS_TOKEN' => 'fb7c5f2957f656c7b4524b9d69f09f52'
-  ]);
-     return $s;
-}
-
+       $s = App::make('ShopifyAPI', [
+      'API_KEY' => env('SHOPIFY_API_KEY'),
+      'API_SECRET' => env('SHOPIFY_API_SECRET'),
+      'SHOP_DOMAIN' => env('SHOPIFY_SHOP_DOMAIN'),
+      'ACCESS_TOKEN' => env('SHOPIFY_ACCESS_TOKEN')
+    ]);
+       return $s;
+  }
 
 }
