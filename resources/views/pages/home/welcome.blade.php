@@ -56,7 +56,7 @@
                 <div><br /></div>
                 <div><br /></div>
                 <div><b><h1>Release Notes</h1></b></div>
-                <div>Image drag and drop: Somewhere between dev and upload the image functionality has broken. Watch this space.</div>
+                <div><b>Known BUG</b>: Image drag and drop: Somewhere between dev and upload the image functionality has broken. Watch this space.</div>
             </div>
         </div>
 
