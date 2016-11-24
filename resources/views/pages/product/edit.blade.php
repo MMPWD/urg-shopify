@@ -119,7 +119,7 @@
 @section('headings.right')
     <div class="button-group">
         <a class="button back" href="{!! route('product.index') !!}"><i class="fa fa-angle-left"></i> Back to Index</a>
-        <a class="button" href="{!! route('product.show', $product->product->id) !!}"><i class="fa fa-pencil"></i> Back to View</a> 
+        <a class="button" href="{!! route('product.show', $product->product->id) !!}"><i class="fa fa-pencil"></i> Back to View</a>
         <a class="button save" href="javascript:{}" onclick="document.getElementById('mainForm').submit(); return false;"><i class="fa fa-plus"></i> Save</a>       
     </div>
 @endsection
